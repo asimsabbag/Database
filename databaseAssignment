@@ -1,0 +1,20 @@
+1.      List the customer name, check number, payment date and amount for the customer with customer number 1001.
+
+select C.customerName,C.customerNumber,P.checkNumber,P.paymentdate,P.amount from Customer as C 
+inner Join payments as P on C.customerNumber=P.customerNumber;
+
+2.      List the employee number, last name and first name for all the employees  who reports to their manager with employee id 1001.
+
+select employeeNumber,lastName,firstName from employee where reportsTo=1001;
+
+
+
+3.      List the customer name, phone and total amount of all customers with credit limit greater than 10000.
+
+select C.customerName,C.phone,sum(amount) as totalSum from customers as C inner join payments as P group by P.customerNumber where C.creditLimit>10000; 
+
+
+4.      List all the order number, order date, product code, product name, quantity ordered, price each  for the customer with customer number 1001.
+
+select OD.orderNumber,OD.orderDate,productCode,quantityOrdered,price from (orders  INNER JOIN orderdetails AS OD ON orders.orderNumber=orderdetails.orderNumber) where customers.customerNumber=1001;
+
